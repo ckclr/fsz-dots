@@ -38,7 +38,7 @@ augroup END
 
 " key mappings {{{
 " open and source vimrc file
-nnoremap <leader>ev :vsp $MYVIMRC<cr>
+nnoremap <leader>ev :edit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " 打开 terminal use c-\c-n to return to normal mode
 nnoremap <silent> <leader>tl :vert term<cr>
@@ -52,7 +52,7 @@ nnoremap <c-y> 5<c-y>
 set mouse=a
 map <scrollwheelup> <c-y>
 map <scrollwheeldown> <c-e>
-" insert mode 和 cmd line mode 下用 emacs 的 keybinding
+" 以下 mode 下用 emacs 的 keybinding
 " insert mode
 inoremap <c-p> <up>
 inoremap <c-n> <down>
@@ -69,6 +69,14 @@ cnoremap <c-f> <right>
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 cnoremap <c-d> <del>
+" terminal mode
+tnoremap <c-p> <up>
+tnoremap <c-n> <down>
+tnoremap <c-b> <left>
+tnoremap <c-f> <right>
+tnoremap <c-a> <home>
+tnoremap <c-e> <end>
+tnoremap <c-d> <del>
 " }}}
 
 
