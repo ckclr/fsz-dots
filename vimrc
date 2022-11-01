@@ -286,6 +286,24 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " }}}
 
+" vim-bookmarks {{{
+Plug 'MattesGroeger/vim-bookmarks'
+let g:bookmark_no_default_key_mappings = 1 " 禁用默认 mapping，避免和 vim 内置 mark 冲突
+let g:bookmark_save_per_working_dir = 1 " 会在每个目录下单独生成 vim-bookmarks
+let g:bookmark_auto_save = 1 " 自动保存 mark
+let g:bookmark_display_annotation = 1 " 显示标注信息
+nnoremap <Leader>mm <Plug>BookmarkToggle
+nnoremap <Leader>mi <Plug>BookmarkAnnotate
+nnoremap <Leader>ma <Plug>BookmarkShowAll
+nnoremap <Leader>mj <Plug>BookmarkNext
+nnoremap <Leader>mk <Plug>BookmarkPrev
+nnoremap <Leader>mc <Plug>BookmarkClear
+nnoremap <Leader>mx <Plug>BookmarkClearAll
+nnoremap <Leader>mk <Plug>BookmarkMoveUp
+nnoremap <Leader>mj <Plug>BookmarkMoveDown
+nnoremap <Leader>mg <Plug>BookmarkMoveToLine
+" }}}
+
 call plug#end()
 " }}}
 
