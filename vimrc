@@ -46,8 +46,8 @@ nnoremap <silent> <leader>tj :term<cr>
 " 关闭搜索高亮
 nnoremap <silent> <esc> :nohlsearch<cr> 
 " 快速滚动
-nnoremap <c-e> 5<c-e>
-nnoremap <c-y> 5<c-y>
+nnoremap <c-e> 3<c-e>
+nnoremap <c-y> 3<c-y>
 " 鼠标滚动
 set mouse=a
 map <scrollwheelup> <c-y>
@@ -128,10 +128,10 @@ Plug 'tpope/vim-sleuth'
 " fzf {{{
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-nnoremap <leader>ff :Files<cr>
-nnoremap <leader>bb :Buffers<cr>
-nnoremap <leader>ag :Ag<cr>
-nnoremap <leader>rg :Rg<cr>
+nnoremap <c-x><c-f> :Files<cr>
+nnoremap <c-x><c-b> :Buffers<cr>
+nnoremap <c-x>ag :Ag<cr>
+nnoremap <c-x>rg :Rg<cr>
 " }}}
 
 " colorscheme-preview {{{
