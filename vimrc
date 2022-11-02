@@ -24,6 +24,8 @@ set splitbelow
 set tabstop=4 " tab size
 set shiftwidth=0 " size of < and >, 0 use tabstop
 set expandtab " expand tab to space
+set laststatus=2 " 始终显示状态栏
+set noshowmode " 有了 lightline 不再需要显示 mode
 " 关闭交换文件
 set noswapfile
 " 默认 backspace 无法删除旧内容，用 2 或 indent,eol,start
@@ -52,6 +54,9 @@ nnoremap <c-y> 3<c-y>
 set mouse=a
 map <scrollwheelup> <c-y>
 map <scrollwheeldown> <c-e>
+" 默认不折行，但可切换
+set nowrap
+nnoremap <silent> <leader>wr :set wrap!<cr>
 " 以下 mode 下用 emacs 的 keybinding
 " insert mode
 inoremap <c-p> <up>
@@ -83,11 +88,9 @@ tnoremap <c-d> <del>
 " plugins {{{
 call plug#begin('~/fsz.plug')
 
-" theme 和 tabline {{{
+" buffer tab {{{
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
-set laststatus=2
-set noshowmode 
 nnoremap [b :bp<cr>
 nnoremap ]b :bn<cr>
 " }}}
@@ -104,8 +107,9 @@ tnoremap <silent> <m-v> <c-\><c-n>:FloatermNext<cr>
 
 " nerdtree {{{
 Plug 'scrooloose/nerdtree'
-nnoremap <silent> <leader>tr :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
+nnoremap <silent> <leader>tr :NERDTreeToggle<cr>
+nnoremap <silent> <leader>tf :NERDTreeFind<cr>
 " }}}
 
 " nerdcommenter {{{
@@ -128,10 +132,10 @@ Plug 'tpope/vim-sleuth'
 " fzf {{{
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-nnoremap <c-x><c-f> :Files<cr>
-nnoremap <c-x><c-b> :Buffers<cr>
-nnoremap <c-x>ag :Ag<cr>
-nnoremap <c-x>rg :Rg<cr>
+nnoremap <leader>ff :Files<cr>
+nnoremap <leader>bb :Buffers<cr>
+nnoremap <leader>ag :Ag<cr>
+nnoremap <leader>rg :Rg<cr>
 " }}}
 
 " colorscheme-preview {{{
@@ -292,16 +296,16 @@ let g:bookmark_no_default_key_mappings = 1 " 禁用默认 mapping，避免和 vi
 let g:bookmark_save_per_working_dir = 1 " 会在每个目录下单独生成 vim-bookmarks
 let g:bookmark_auto_save = 1 " 自动保存 mark
 let g:bookmark_display_annotation = 1 " 显示标注信息
-nnoremap <Leader>mm <Plug>BookmarkToggle
-nnoremap <Leader>mi <Plug>BookmarkAnnotate
-nnoremap <Leader>ma <Plug>BookmarkShowAll
-nnoremap <Leader>mj <Plug>BookmarkNext
-nnoremap <Leader>mk <Plug>BookmarkPrev
-nnoremap <Leader>mc <Plug>BookmarkClear
-nnoremap <Leader>mx <Plug>BookmarkClearAll
-nnoremap <Leader>mk <Plug>BookmarkMoveUp
-nnoremap <Leader>mj <Plug>BookmarkMoveDown
-nnoremap <Leader>mg <Plug>BookmarkMoveToLine
+nnoremap <leader>mm <Plug>BookmarkToggle
+nnoremap <leader>mi <Plug>BookmarkAnnotate
+nnoremap <leader>ma <Plug>BookmarkShowAll
+nnoremap <leader>mj <Plug>BookmarkNext
+nnoremap <leader>mk <Plug>BookmarkPrev
+nnoremap <leader>mc <Plug>BookmarkClear
+nnoremap <leader>mx <Plug>BookmarkClearAll
+nnoremap <leader>mK <Plug>BookmarkMoveUp
+nnoremap <leader>mJ <Plug>BookmarkMoveDown
+nnoremap <leader>mg <Plug>BookmarkMoveToLine
 " }}}
 
 call plug#end()
@@ -309,7 +313,7 @@ call plug#end()
 
 
 " last settings {{{
-
-colorscheme slate " colorscheme 设置放到最后
+" colorscheme 设置放到最后
+colorscheme slate
 syntax enable
 " }}}
