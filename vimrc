@@ -294,10 +294,15 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 Plug 'MattesGroeger/vim-bookmarks'
 let g:bookmark_no_default_key_mappings = 1 " 禁用默认 mapping，避免和 vim 内置 mark 冲突
 let g:bookmark_save_per_working_dir = 1 " 会在每个目录下单独生成 vim-bookmarks
-let g:bookmark_auto_save = 1 " 自动保存 mark
-let g:bookmark_display_annotation = 1 " 显示标注信息
+let g:bookmark_auto_save = 0 " 自动保存有 bug，暂时不用
+let g:bookmark_show_warning = 1 " 清空时提醒
+let g:bookmark_show_toggle_warning = 1 " 删除时提醒
+let g:bookmark_display_annotation = 1 " 在状态栏显示标注信息
+let g:bookmark_location_list = 1 " 用 location list 而不是 quickfix
+nnoremap <leader>ms :BookmarkSave fsz.bookmarks<cr>
+nnoremap <leader>ml :BookmarkLoad fsz.bookmarks<cr>
 nnoremap <leader>mm <Plug>BookmarkToggle
-nnoremap <leader>mi <Plug>BookmarkAnnotate
+nnoremap <leader>mi <Plug>BookmarkAnnotate <Plug>BookmarkShowAll
 nnoremap <leader>ma <Plug>BookmarkShowAll
 nnoremap <leader>mj <Plug>BookmarkNext
 nnoremap <leader>mk <Plug>BookmarkPrev
@@ -308,12 +313,15 @@ nnoremap <leader>mJ <Plug>BookmarkMoveDown
 nnoremap <leader>mg <Plug>BookmarkMoveToLine
 " }}}
 
+" vim-yggdrasil 一个基础组件，构建 tree view ，以后用 {{{
+Plug 'm-pilia/vim-yggdrasil'
+" }}}
+
 call plug#end()
 " }}}
 
 
 " last settings {{{
-" colorscheme 设置放到最后
-colorscheme slate
+colorscheme slate " colorscheme 设置放到最后
 syntax enable
 " }}}
