@@ -1,4 +1,4 @@
-" for windows gvim {{{
+" for gvim {{{
 if has('gui_running')
     set guifont=Sarasa\ Term\ Slab\ SC:h11
     set guioptions-=m  "menu bar
@@ -7,6 +7,8 @@ if has('gui_running')
     set guioptions-=L  "left scrollbar
     winpos 500 250
     winsize 170 35
+else
+  set t_Co=256
 endif
 " }}}
 
@@ -88,9 +90,11 @@ tnoremap <c-d> <del>
 " plugins {{{
 call plug#begin('~/fsz.plug')
 
-" buffer tab {{{
+" theme buffer tab {{{
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
+Plug 'rakr/vim-one'
+let g:lightline = {'colorscheme': 'wombat'}
 nnoremap [b :bp<cr>
 nnoremap ]b :bn<cr>
 " }}}
@@ -134,6 +138,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 nnoremap <leader>ff :Files<cr>
 nnoremap <leader>bb :Buffers<cr>
+nnoremap <leader>bl :BLines<cr>
 nnoremap <leader>ag :Ag<cr>
 nnoremap <leader>rg :Rg<cr>
 " }}}
@@ -322,6 +327,7 @@ call plug#end()
 
 
 " last settings {{{
-colorscheme slate " colorscheme 设置放到最后
+colorscheme one
+set background=light
 syntax enable
 " }}}
