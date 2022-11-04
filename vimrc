@@ -328,7 +328,7 @@ call plug#end()
 " my functions {{{
 
 " function ToggleDarkLight {{{
-let g:fsz_dark_light = 1 " 0 dark 1 light
+let g:fsz_dark_light = 0
 function! ToggleDarkLight()
     if g:fsz_dark_light == 1
         let g:fsz_dark_light = 0
@@ -341,10 +341,24 @@ endfunction
 nnoremap <silent><leader>th :call ToggleDarkLight()<cr>
 " }}}
 
+" function! AutoDarkLight {{{
+function! AutoDarkLight()
+    " 按时间设置默认暗色或亮色
+    let hour = strftime("%H")
+    if 6 <= hour && hour < 18
+        let g:fsz_dark_light = 1
+        set background=light
+    else
+        let g:fsz_dark_light = 0
+        set background=dark
+    endif
+endfunction
+" }}}
+
 " }}}
 
 " last settings {{{
 colorscheme one
-set background=light
 syntax enable
+call AutoDarkLight()
 " }}}
