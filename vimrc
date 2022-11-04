@@ -325,6 +325,23 @@ Plug 'm-pilia/vim-yggdrasil'
 call plug#end()
 " }}}
 
+" my functions {{{
+
+" function ToggleDarkLight {{{
+let g:fsz_dark_light = 1 " 0 dark 1 light
+function! ToggleDarkLight()
+    if g:fsz_dark_light == 1
+        let g:fsz_dark_light = 0
+        set background=dark
+    else
+        let g:fsz_dark_light = 1
+        set background=light
+    endif
+endfunction
+nnoremap <silent><leader>th :call ToggleDarkLight()<cr>
+" }}}
+
+" }}}
 
 " last settings {{{
 colorscheme one
