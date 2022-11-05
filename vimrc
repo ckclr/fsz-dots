@@ -93,8 +93,8 @@ call plug#begin('~/fsz.plug')
 " theme buffer tab {{{
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
-Plug 'rakr/vim-one'
-let g:lightline = {'colorscheme': 'wombat'}
+Plug 'lifepillar/vim-solarized8'
+let g:lightline = {'colorscheme': 'solarized'}
 nnoremap [b :bp<cr>
 nnoremap ]b :bn<cr>
 " }}}
@@ -325,6 +325,7 @@ Plug 'm-pilia/vim-yggdrasil'
 call plug#end()
 " }}}
 
+
 " my functions {{{
 
 " function ToggleDarkLight {{{
@@ -357,8 +358,9 @@ endfunction
 
 " }}}
 
+
 " last settings {{{
-colorscheme one
+colorscheme solarized8
 syntax enable
 call AutoDarkLight()
 " }}}
