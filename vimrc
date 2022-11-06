@@ -32,6 +32,8 @@ set noshowmode " 有了 lightline 不再需要显示 mode
 set noswapfile
 " 默认 backspace 无法删除旧内容，用 2 或 indent,eol,start
 set backspace=2
+" 开启搜索高亮
+set hlsearch
 
 augroup filetype_vim " vimrc 内按 marker 折叠
     autocmd!
@@ -47,7 +49,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " 打开 terminal use c-\c-n to return to normal mode
 nnoremap <silent> <leader>tl :vert term<cr>
 nnoremap <silent> <leader>tj :term<cr>
-" 关闭搜索高亮
+" 关闭搜索高亮，下次搜索还会高亮
 nnoremap <silent> <esc> :nohlsearch<cr> 
 " 快速滚动
 nnoremap <c-e> 3<c-e>
