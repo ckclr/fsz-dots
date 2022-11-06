@@ -8,7 +8,7 @@ if has('gui_running')
     winpos 500 250
     winsize 170 35
 else
-  set t_Co=256
+    set t_Co=256
 endif
 " }}}
 
@@ -320,6 +320,21 @@ nnoremap <leader>mg <Plug>BookmarkMoveToLine
 
 " vim-yggdrasil 一个基础组件，构建 tree view ，以后用 {{{
 Plug 'm-pilia/vim-yggdrasil'
+" }}}
+
+" google/vim-maktaba 那一堆 {{{
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+augroup autoformat_settings
+    autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+    autocmd FileType go AutoFormatBuffer gofmt
+    autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer prettier
+    autocmd FileType python AutoFormatBuffer black
+augroup END
+" }}}
+
+" vim-startuptime 启动时间 benchmark {{{
+Plug 'dstein64/vim-startuptime'
 " }}}
 
 call plug#end()
