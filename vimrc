@@ -305,9 +305,6 @@ let g:bookmark_auto_save = 0 " 自动保存有 bug，暂时不用
 let g:bookmark_show_warning = 1 " 清空时提醒
 let g:bookmark_show_toggle_warning = 1 " 删除时提醒
 let g:bookmark_display_annotation = 1 " 在状态栏显示标注信息
-let g:bookmark_location_list = 1 " 用 location list 而不是 quickfix
-nnoremap <leader>ms :BookmarkSave fsz.bookmarks<cr>
-nnoremap <leader>ml :BookmarkLoad fsz.bookmarks<cr>
 nnoremap <leader>mm <Plug>BookmarkToggle
 nnoremap <leader>mi <Plug>BookmarkAnnotate <Plug>BookmarkShowAll
 nnoremap <leader>ma <Plug>BookmarkShowAll
@@ -379,5 +376,5 @@ endfunction
 " last settings {{{
 colorscheme solarized8
 syntax enable
-call AutoDarkLight()
+call ToggleDarkLight()
 " }}}
