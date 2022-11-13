@@ -1,18 +1,3 @@
-" for gvim {{{
-if has('gui_running')
-    set guifont=Sarasa\ Term\ Slab\ SC:h11
-    set guioptions-=m  "menu bar
-    set guioptions-=T  "toolbar
-    set guioptions-=r  "right scrollbar
-    set guioptions-=L  "left scrollbar
-    winpos 500 250
-    winsize 170 35
-else
-    set t_Co=256
-endif
-" }}}
-
-
 " basic settings {{{
 set encoding=utf-8 " 设置字符编码
 set autoread " 自动载入外部修改
@@ -342,14 +327,14 @@ call plug#end()
 
 " my functions {{{
 
-" function ToggleDarkLight {{{
-let g:fsz_dark_light = 0
+" function! ToggleDarkLight {{{
+let s:fsz_dark_light = 0
 function! ToggleDarkLight()
-    if g:fsz_dark_light == 1
-        let g:fsz_dark_light = 0
+    if s:fsz_dark_light == 1
+        let s:fsz_dark_light = 0
         set background=dark
     else
-        let g:fsz_dark_light = 1
+        let s:fsz_dark_light = 1
         set background=light
     endif
 endfunction
@@ -361,20 +346,75 @@ function! AutoDarkLight()
     " 按时间设置默认暗色或亮色
     let hour = strftime("%H")
     if 6 <= hour && hour < 18
-        let g:fsz_dark_light = 1
+        let s:fsz_dark_light = 1
         set background=light
     else
-        let g:fsz_dark_light = 0
+        let s:fsz_dark_light = 0
         set background=dark
     endif
 endfunction
+" }}}
+
+" function! SetWindowAndFontSize {{{
+let s:fsz_font_index = 1
+function! SetWindowAndFontSize()
+    let size_list = [9, 11, 12, 14, 18]
+    let s:fsz_font_index  = min([max([s:fsz_font_index, 0]), len(size_list) - 1])
+    let font_size = size_list[s:fsz_font_index]
+    if font_size == 9
+        set guifont=Sarasa\ Term\ Slab\ SC:h9
+        winpos 500 250
+        winsize 170 35
+    elseif font_size == 11
+        set guifont=Sarasa\ Term\ Slab\ SC:h11
+        winpos 450 250
+        winsize 170 35
+    elseif font_size == 12
+        set guifont=Sarasa\ Term\ Slab\ SC:h12
+        winpos 400 200
+        winsize 170 35
+    elseif font_size == 14
+        set guifont=Sarasa\ Term\ Slab\ SC:h14
+        winpos 250 150
+        winsize 170 35
+    elseif font_size == 18
+        set guifont=Sarasa\ Term\ Slab\ SC:h18
+        winpos 9999 9999
+        winsize 9999 9999
+    else
+        echo "wrong font size"
+    endif
+endfunction
+function! IncreaseFontSize()
+    let s:fsz_font_index = s:fsz_font_index + 1
+    call SetWindowAndFontSize()
+endfunction
+function! DecreaseFontSize()
+    let s:fsz_font_index = s:fsz_font_index - 1
+    call SetWindowAndFontSize()
+endfunction
+nnoremap <silent><m-g>+ :call IncreaseFontSize()<cr>
+nnoremap <silent><m-g>- :call DecreaseFontSize()<cr>
 " }}}
 
 " }}}
 
 
 " last settings {{{
+
 colorscheme solarized8
 syntax enable
 call ToggleDarkLight()
+
+if has('gui_running')
+    set guioptions-=m  "menu bar
+    set guioptions-=T  "toolbar
+    set guioptions-=r  "right scrollbar
+    set guioptions-=L  "left scrollbar
+    let s:fsz_font_index = 1
+    call SetWindowAndFontSize()
+else
+    set t_Co=256
+endif
+
 " }}}
