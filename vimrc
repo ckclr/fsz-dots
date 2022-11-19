@@ -37,8 +37,8 @@ nnoremap <silent> <leader>tj :term<cr>
 " 关闭搜索高亮，下次搜索还会高亮
 nnoremap <silent> <esc> :nohlsearch<cr> 
 " 快速滚动
-nnoremap <c-e> 3<c-e>
-nnoremap <c-y> 3<c-y>
+nnoremap <c-e> 5<c-e>
+nnoremap <c-y> 5<c-y>
 " 鼠标滚动
 set mouse=a
 map <scrollwheelup> <c-y>
@@ -355,48 +355,6 @@ function! AutoDarkLight()
 endfunction
 " }}}
 
-" function! SetWindowAndFontSize {{{
-let s:fsz_font_index = 1
-function! SetWindowAndFontSize()
-    let size_list = [9, 11, 12, 14, 18]
-    let s:fsz_font_index  = min([max([s:fsz_font_index, 0]), len(size_list) - 1])
-    let font_size = size_list[s:fsz_font_index]
-    if font_size == 9
-        set guifont=Sarasa\ Term\ Slab\ SC:h9
-        winpos 500 250
-        winsize 170 35
-    elseif font_size == 11
-        set guifont=Sarasa\ Term\ Slab\ SC:h11
-        winpos 450 250
-        winsize 170 35
-    elseif font_size == 12
-        set guifont=Sarasa\ Term\ Slab\ SC:h12
-        winpos 400 200
-        winsize 170 35
-    elseif font_size == 14
-        set guifont=Sarasa\ Term\ Slab\ SC:h14
-        winpos 250 150
-        winsize 170 35
-    elseif font_size == 18
-        set guifont=Sarasa\ Term\ Slab\ SC:h18
-        winpos 9999 9999
-        winsize 9999 9999
-    else
-        echo "wrong font size"
-    endif
-endfunction
-function! IncreaseFontSize()
-    let s:fsz_font_index = s:fsz_font_index + 1
-    call SetWindowAndFontSize()
-endfunction
-function! DecreaseFontSize()
-    let s:fsz_font_index = s:fsz_font_index - 1
-    call SetWindowAndFontSize()
-endfunction
-nnoremap <silent><m-g>+ :call IncreaseFontSize()<cr>
-nnoremap <silent><m-g>- :call DecreaseFontSize()<cr>
-" }}}
-
 " }}}
 
 
@@ -411,8 +369,9 @@ if has('gui_running')
     set guioptions-=T  "toolbar
     set guioptions-=r  "right scrollbar
     set guioptions-=L  "left scrollbar
-    let s:fsz_font_index = 1
-    call SetWindowAndFontSize()
+    set guifont=Sarasa\ Term\ Slab\ SC:h11
+    winpos 450 250
+    winsize 170 35
 else
     set t_Co=256
 endif
