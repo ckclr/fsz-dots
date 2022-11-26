@@ -81,7 +81,7 @@ call plug#begin('~/fsz.plug')
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
 Plug 'lifepillar/vim-solarized8'
-let g:lightline = {'colorscheme': 'solarized'}
+let g:lightline = {'colorscheme': 'one'}
 nnoremap [b :bp<cr>
 nnoremap ]b :bn<cr>
 " }}}
@@ -360,7 +360,7 @@ endfunction
 
 " last settings {{{
 
-colorscheme solarized8
+colorscheme delek
 syntax enable
 call ToggleDarkLight()
 
