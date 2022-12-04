@@ -19,6 +19,8 @@ set noswapfile
 set backspace=2
 " 开启搜索高亮
 set hlsearch
+" 开启增量搜索
+set incsearch
 
 augroup filetype_vim " vimrc 内按 marker 折叠
     autocmd!
